@@ -333,7 +333,7 @@ impl crate::notifications::orc_render::RenderableNotification for NotificationSt
         &self,
         block: ratatui::widgets::Block<'a>,
         frame_area: ratatui::prelude::Rect,
-        base_set: &ratatui::symbols::border::Set,
+        base_set: &'a ratatui::symbols::border::Set,
     ) -> ratatui::widgets::Block<'a> {
         use crate::notifications::types::Animation;
 
