@@ -71,7 +71,7 @@ pub fn slide_apply_border_effect<'a>(
     custom_slide_in_start_pos: Option<(f32, f32)>,
     custom_slide_out_end_pos: Option<(f32, f32)>,
     frame_area: Rect,
-    base_set: &border::Set,
+    base_set: &'a border::Set,
 ) -> Block<'a> {
     const PROGRESS_OFFSET: f32 = 0.0;
 
