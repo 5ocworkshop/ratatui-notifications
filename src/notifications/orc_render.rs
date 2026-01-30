@@ -36,7 +36,7 @@ pub trait RenderableNotification: crate::notifications::orc_stacking::StackableN
 
     // Animation handler methods - avoid dyn compatibility issues by including them directly
     fn calculate_animation_rect(&self, frame_area: Rect) -> Rect;
-    fn apply_animation_block_effect<'a>(&self, block: Block<'a>, frame_area: Rect, base_set: &border::Set) -> Block<'a>;
+    fn apply_animation_block_effect<'a>(&self, block: Block<'a>, frame_area: Rect, base_set: &'a border::Set) -> Block<'a>;
     fn interpolate_frame_foreground(&self, base_fg: Option<Color>, phase: AnimationPhase, progress: f32) -> Option<Color>;
     fn interpolate_content_foreground(&self, base_fg: Option<Color>, phase: AnimationPhase, progress: f32) -> Option<Color>;
 }
@@ -210,7 +210,7 @@ fn apply_fade_if_needed<T: RenderableNotification>(
 }
 
 /// Helper to get border set from border type
-fn get_border_set(border_type: BorderType) -> border::Set {
+fn get_border_set(border_type: BorderType) -> border::Set<'static> {
     match border_type {
         BorderType::Plain => border::PLAIN,
         BorderType::Rounded => border::ROUNDED,
